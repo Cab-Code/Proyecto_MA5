@@ -13,7 +13,7 @@ def graficar(f, xa, xb):
     z = x + 1j*y
 
     omega = eval(f)
-
+    print("omega:",f)
     try:
         plt.figure(figsize=(10, 5))
 
@@ -41,18 +41,17 @@ def graficar(f, xa, xb):
 
 
 def crear_omega(array, mapeo):
-    print("creando omega...")
-    print(mapeo)
+
 
     funcion = f'{array[-1][0]} - (1j/pi)*('
-    print(funcion)
+    
     n = len(array)
 
     for i in range(n):
         if i == 0:
             continue
         try:
-            z = array[i][1]
+            z = array[i-1][1]
             xi = eval(mapeo)
         except:
             Error = tk.Tk()
@@ -64,23 +63,18 @@ def crear_omega(array, mapeo):
         funcion = f'{funcion}{str}'
 
     funcion = f'{funcion}0)'
-    print(funcion)
+
 
     z = array[1][1]
     xa = eval(mapeo)
 
     z = array[-1][1]
     xb = eval(mapeo)
-    print(mapeo,xa,xb)
+
 
     graficar(funcion, xa, xb)
 
-def ordenar_datos(array, map):
-    n = len(array)
-    for conjDato in array:
-        for j in range(n-1):
-            if array[j] [1]> array[j + 1][1]:
-                array[j], array[j + 1] = array[j + 1], array[j]
+
 
     
     crear_omega(array, map)
@@ -102,9 +96,9 @@ def get_datos(array, entry_map):
             dat2 = dat[2].get()
         else:
             dat1 = dat[1].get()
-            dat2 = "-100000000000000"
+            dat2 = "0"
         if(numerico(dat1) and numerico(dat2)):
-            print("Es numerica")
+
             nuevo_array.append([float(dat1),float(dat2)])
         else:
             Error = tk.Tk()
@@ -114,9 +108,8 @@ def get_datos(array, entry_map):
             Error.mainloop()
             return
     mapeo = entry_map.get()
-    print(nuevo_array)
-    print(array)
-    ordenar_datos(nuevo_array, mapeo)
+
+    crear_omega(nuevo_array, mapeo)
     quitar_entry(array)
     anadir_entry(array)
     
