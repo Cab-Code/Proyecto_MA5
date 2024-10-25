@@ -81,7 +81,7 @@ def crear_omega(array, mapeo):
 
 def numerico(string):
     try:
-        float(string)  # Intenta convertir la cadena a float
+        complejo= complex(string)  # Intenta convertir la cadena a float
         return True
     except ValueError:
         return False
@@ -99,7 +99,7 @@ def get_datos(array, entry_map):
             dat2 = "0"
         if(numerico(dat1) and numerico(dat2)):
 
-            nuevo_array.append([float(dat1),float(dat2)])
+            nuevo_array.append([complex(dat1), complex(dat2)])
         else:
             Error = tk.Tk()
             Error.title("Ejemplo de Tkinter")
