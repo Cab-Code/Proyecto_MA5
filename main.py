@@ -65,10 +65,10 @@ def crear_omega(array, mapeo):
     funcion = f'{funcion}0)'
 
 
-    z = array[1][1]
+    z = array[1][1].real
     xa = eval(mapeo)
 
-    z = array[-1][1]
+    z = array[-1][1].real
     xb = eval(mapeo)
 
 
